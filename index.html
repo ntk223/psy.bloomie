@@ -170,9 +170,10 @@
   .section-title {
     font-family: "Baloo 2", sans-serif;
     font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 800;
-    line-height: 1.18; color: var(--navy);
+    line-height: 1.18; color: var(--navy); text-wrap: balance;
   }
   .section-title.center { text-align: center; }
+  .section-title .tl { white-space: nowrap; }
 
   /* ---------- Chuyện nhỏ ở tiệm ---------- */
   .sec-story {
@@ -430,6 +431,8 @@
   /* ============ SMALL MOBILE ≤ 480px ============ */
   @media (max-width: 480px) {
     body { font-size: 18px; }
+    .section-title { font-size: clamp(1.35rem, 6.5vw, 1.7rem); text-wrap: balance; }
+    .value-card h3 { font-size: 1.3rem; text-wrap: balance; }
     .hero .wordmark { font-size: clamp(2.1rem, 8vw, 2.4rem); }
     .hero h1 { font-size: clamp(2.2rem, 8.5vw, 2.9rem); }
     .hero-quote { font-size: 17px; }
@@ -572,7 +575,7 @@
     <div class="kicker-row reveal">
       <span class="kicker">Vì sao chọn psy.bloomie?</span>
     </div>
-    <h2 class="section-title center reveal" style="--d:100ms">Hoa tươi, gói cẩn thận,<br>đến tận tay bạn</h2>
+    <h2 class="section-title center reveal" style="--d:100ms"><span class="tl">Hoa tươi, gói cẩn thận,</span><br><span class="tl">đến tận tay bạn</span></h2>
     <div class="values">
       <article class="value-card reveal">
         <div class="value-icon" aria-hidden="true">
@@ -618,7 +621,7 @@
     <div class="kicker-row reveal">
       <span class="kicker">Bộ sưu tập</span>
     </div>
-    <h2 class="section-title center reveal" style="--d:100ms">Những bó hoa đang nở<br>trong tuần này</h2>
+    <h2 class="section-title center reveal" style="--d:100ms"><span class="tl">Những bó hoa đang nở</span><br><span class="tl">trong tuần này</span></h2>
     <div class="bouquet-grid">
 
       <article class="bouquet-card reveal">
@@ -745,7 +748,7 @@
     <div class="kicker-row reveal">
       <span class="kicker">Đặt hoa</span>
     </div>
-    <h2 class="section-title reveal" style="--d:100ms">Gọi điện cho tụi mình,<br>hoa sẽ đến đúng ngày hẹn</h2>
+    <h2 class="section-title reveal" style="--d:100ms"><span class="tl">Gọi điện cho tụi mình,</span><br><span class="tl">hoa sẽ đến đúng ngày hẹn</span></h2>
     <p class="reveal" style="--d:200ms">Kể tụi mình nghe người nhận là ai và bạn muốn gửi điều gì — phần còn lại, để psy.bloomie lo. Ảnh bó hoa thật sẽ được gửi xác nhận trước khi giao.</p>
     <div class="hero-actions reveal" style="--d:300ms">
       <a class="btn btn-primary" href="tel:0765799413">☎ 0765 799 413</a>
