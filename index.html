@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>psy.bloomie — flower &amp; healing 🌷</title>
+<meta name="description" content="psy.bloomie — tiệm hoa online tại Hà Nội. Hoa tươi mỗi ngày, gói quà thủ công, nhận đơn đặt trước 1–2 ngày.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #dceafb;
+    --sky-deep: #b9d9f2;
+    --sky-soft: #e8f2fc;
+    --cloud: #ffffff;
+    --cream: #fdf6e9;
+    --blush: #f6dfe4;
+    --navy: #2b4a9e;
+    --navy-deep: #1d3a8f;
+    --blue-mid: #6f9fe8;
+    --blue-text: #4f83dd;
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--sky);
+    color: var(--navy);
+    font-family: "Nunito", -apple-system, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--blue-mid); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+
+  /* ============ BUBBLE / STICKER TEXT ============ */
+  .bubble {
+    font-family: "Baloo 2", "Nunito", sans-serif;
+    font-weight: 800;
+    line-height: 1.12;
+    color: var(--navy);
+    text-shadow:
+      -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff,
+      -3px 0 0 #fff, 3px 0 0 #fff, 0 -3px 0 #fff, 0 3px 0 #fff,
+      0 7px 16px rgba(43, 74, 158, 0.16);
+  }
+  .bubble-lg {
+    font-family: "Baloo 2", "Nunito", sans-serif;
+    font-weight: 800;
+    line-height: 1.08;
+    text-shadow:
+      -5px -5px 0 #fff, 5px -5px 0 #fff, -5px 5px 0 #fff, 5px 5px 0 #fff,
+      -5px 0 0 #fff, 5px 0 0 #fff, 0 -5px 0 #fff, 0 5px 0 #fff,
+      -4px -4px 0 #fff, 4px -4px 0 #fff, -4px 4px 0 #fff, 4px 4px 0 #fff,
+      0 12px 26px rgba(43, 74, 158, 0.22);
+  }
+  .tagline {
+    font-weight: 700; font-style: italic;
+    color: var(--navy);
+    opacity: 0.75;
+  }
+
+  /* ============ DOODLES ============ */
+  .doodle { position: absolute; pointer-events: none; z-index: 1; }
+  .bob { animation: bob 3s ease-in-out infinite; }
+  .bob-slow { animation: bob 4.2s ease-in-out infinite; }
+  @keyframes bob {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -5px; }
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(232, 242, 252, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid rgba(43, 74, 158, 0.10);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+  .nav .wordmark { font-size: 23px; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a {
+    font-family: "Nunito", sans-serif; font-weight: 800; font-size: 14px;
+    color: var(--navy); position: relative; padding: 4px 0;
+    transition: color 200ms var(--ease);
+  }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: -2px; height: 4px; width: 100%;
+    background: var(--blue-mid); border-radius: 999px; transform: scaleX(0); transform-origin: left;
+    transition: transform 200ms var(--ease);
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 15px;
+    background: var(--navy); color: #fff;
+    border-radius: 999px; padding: 9px 24px;
+    box-shadow: 0 4px 0 var(--navy-deep);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .nav-cta:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--navy-deep); }
+
+  /* ============ HERO ============ */
+  .hero { position: relative; text-align: center; padding: 88px 0 130px; overflow: hidden; }
+  .hero-wash {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(46% 40% at 16% 20%, rgba(185, 217, 242, 0.9), transparent 68%),
+      radial-gradient(40% 36% at 84% 14%, rgba(255, 255, 255, 0.9), transparent 70%),
+      radial-gradient(50% 44% at 52% 88%, rgba(255, 255, 255, 0.85), transparent 72%),
+      radial-gradient(30% 26% at 90% 70%, rgba(253, 246, 233, 0.75), transparent 74%),
+      radial-gradient(24% 22% at 8% 78%, rgba(185, 217, 242, 0.8), transparent 76%);
+    filter: blur(6px);
+  }
+  .hero .wordmark { font-size: clamp(2.4rem, 5.5vw, 3.8rem); position: relative; z-index: 2; }
+  .hero .tagline { display: block; font-size: 1.1rem; margin-top: 6px; position: relative; z-index: 2; }
+  .hero-title-wrap { position: relative; display: inline-block; z-index: 2; }
+  .hero h1 {
+    font-size: clamp(2.9rem, 7.5vw, 5.2rem);
+    color: var(--blue-text);
+  }
+  .daisy-on-title {
+    position: absolute; top: -26px; right: -30px; width: 56px; height: 56px;
+  }
+  .hero-quote {
+    max-width: 560px; margin: 30px auto 0;
+    font-size: 17px; font-weight: 600; color: var(--navy);
+    position: relative; z-index: 2;
+  }
+  .hero-actions { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 38px; flex-wrap: wrap; position: relative; z-index: 2; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 17px;
+    border-radius: 999px; padding: 14px 36px; cursor: pointer;
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease),
+                background-color 200ms var(--ease), color 200ms var(--ease);
+  }
+  .btn-primary { background: var(--navy); color: #fff; box-shadow: 0 6px 0 var(--navy-deep); }
+  .btn-primary:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--navy-deep); }
+  .btn-ghost { background: #fff; color: var(--navy); border: 3px solid var(--navy); box-shadow: 0 6px 0 rgba(43, 74, 158, 0.25); }
+  .btn-ghost:hover { transform: translateY(3px); box-shadow: 0 3px 0 rgba(43, 74, 158, 0.25); }
+  .hero-note {
+    margin-top: 34px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--navy); opacity: 0.75; position: relative; z-index: 2;
+  }
+
+  /* ============ SECTIONS ============ */
+  section.block { position: relative; padding: 104px 0; }
+
+  .kicker {
+    display: inline-block;
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 14px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--blue-text);
+    background: #fff; border: 2.5px solid var(--navy);
+    border-radius: 999px; padding: 6px 20px;
+    box-shadow: 0 4px 0 rgba(43, 74, 158, 0.18);
+    margin-bottom: 24px;
+  }
+  .kicker.center { margin-left: auto; margin-right: auto; }
+  .kicker-row { text-align: center; }
+  .section-title {
+    font-family: "Baloo 2", sans-serif;
+    font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800;
+    line-height: 1.18; color: var(--navy);
+  }
+  .section-title.center { text-align: center; }
+
+  /* ---------- Chuyện nhỏ ở tiệm ---------- */
+  .sec-story {
+    background:
+      radial-gradient(40% 60% at 12% 20%, rgba(255,255,255,0.85), transparent 70%),
+      radial-gradient(36% 52% at 90% 80%, rgba(185,217,242,0.7), transparent 72%),
+      var(--sky-soft);
+    border-top: 2px solid rgba(43,74,158,0.08);
+    border-bottom: 2px solid rgba(43,74,158,0.08);
+  }
+  .story-grid { display: grid; grid-template-columns: 5fr 6fr; gap: 60px; align-items: center; }
+  .story-photo {
+    position: relative;
+    aspect-ratio: 4 / 5; overflow: hidden;
+    border-radius: 14px; border: 3px solid var(--navy);
+    background: #fff;
+    box-shadow: 8px 8px 0 rgba(43, 74, 158, 0.16);
+  }
+  .story-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .story-copy p { font-size: 16px; font-weight: 600; color: var(--navy); margin-top: 18px; }
+  .story-copy p strong { font-weight: 800; }
+  .story-sign {
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.15rem;
+    color: var(--blue-text); margin-top: 22px;
+  }
+
+  /* ---------- Values ---------- */
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .value-card {
+    background: #fff; border: 3px solid var(--navy); border-radius: 16px;
+    padding: 34px 26px 30px; text-align: center;
+    box-shadow: 7px 7px 0 rgba(43, 74, 158, 0.14);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .value-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 rgba(43, 74, 158, 0.18); }
+  .value-icon { display: flex; justify-content: center; margin-bottom: 16px; }
+  .value-card h3 { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--navy); margin-bottom: 8px; }
+  .value-card p { font-size: 14px; font-weight: 600; color: rgba(43, 74, 158, 0.8); }
+
+  /* ---------- Bộ sưu tập ---------- */
+  .sec-collection {
+    background:
+      radial-gradient(44% 60% at 88% 12%, rgba(255,255,255,0.8), transparent 70%),
+      radial-gradient(40% 56% at 10% 90%, rgba(185,217,242,0.75), transparent 72%),
+      var(--sky);
+  }
+  .bouquet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 56px; }
+  .bouquet-card {
+    background: #fff; border: 3px solid var(--navy); border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 7px 7px 0 rgba(43, 74, 158, 0.14);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .bouquet-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 rgba(43, 74, 158, 0.18); }
+  .bouquet-photo {
+    aspect-ratio: 4 / 5; overflow: hidden;
+    border-bottom: 3px solid var(--navy);
+    background: var(--sky-soft);
+  }
+  .bouquet-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 600ms var(--ease);
+  }
+  .bouquet-card:hover .bouquet-photo img { transform: scale(1.04); }
+  .bouquet-body { padding: 18px 20px 22px; }
+  .bouquet-body h3 { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--navy); }
+  .bouquet-price {
+    font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--blue-text);
+    font-variant-numeric: tabular-nums;
+    margin: 4px 0 8px;
+  }
+  .bouquet-price .flowers {
+    font-family: "Nunito", sans-serif; font-weight: 600; font-size: 12.5px;
+    color: rgba(43, 74, 158, 0.72); margin-left: 8px;
+  }
+  .bouquet-body .desc { font-size: 13.5px; font-weight: 600; color: rgba(43, 74, 158, 0.78); }
+  .bouquet-order {
+    display: inline-block; margin-top: 12px;
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 14px;
+    color: var(--navy); background: var(--sky-soft);
+    border: 2px solid var(--navy); border-radius: 999px; padding: 5px 18px;
+    box-shadow: 0 3px 0 rgba(43, 74, 158, 0.22);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .bouquet-order:hover { transform: translateY(2px); box-shadow: 0 1px 0 rgba(43, 74, 158, 0.22); }
+
+  /* ---------- Dịp tặng ---------- */
+  .sec-occasions {
+    background:
+      radial-gradient(50% 80% at 20% 30%, rgba(255,255,255,0.9), transparent 70%),
+      radial-gradient(40% 70% at 82% 70%, rgba(246, 223, 228, 0.5), transparent 74%),
+      var(--cream);
+    border-top: 2px solid rgba(43,74,158,0.08);
+    border-bottom: 2px solid rgba(43,74,158,0.08);
+  }
+  .occasions-line {
+    max-width: 720px; margin: 36px auto 0; text-align: center;
+    font-family: "Baloo 2", sans-serif; font-weight: 700;
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem); line-height: 2.2; color: var(--navy);
+  }
+  .occasions-line .sep { color: var(--blue-mid); padding: 0 10px; }
+  .occasions-note { text-align: center; margin-top: 22px; font-size: 14px; font-weight: 700; font-style: italic; color: rgba(43, 74, 158, 0.75); }
+
+  /* ---------- Testimonials ---------- */
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 56px; }
+  .testi-card {
+    background: #fff; border: 3px solid var(--navy); border-radius: 16px;
+    padding: 28px 24px 24px; text-align: center; position: relative;
+    box-shadow: 7px 7px 0 rgba(43, 74, 158, 0.14);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .testi-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 rgba(43, 74, 158, 0.18); }
+  .testi-card::before {
+    content: "\\201C"; display: block;
+    font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 3rem; line-height: 0.7;
+    color: var(--blue-mid); margin-bottom: 12px;
+  }
+  .testi-card blockquote { font-size: 14.5px; font-weight: 600; color: var(--navy); }
+  .testi-person {
+    margin-top: 16px; font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-text);
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-final { text-align: center; padding: 130px 0 140px; position: relative; }
+  .cta-wash {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(44% 60% at 24% 40%, rgba(255,255,255,0.9), transparent 70%),
+      radial-gradient(40% 56% at 78% 60%, rgba(185,217,242,0.8), transparent 72%),
+      radial-gradient(22% 26% at 60% 90%, rgba(253, 246, 233, 0.7), transparent 76%);
+    filter: blur(4px);
+  }
+  .cta-final .container { position: relative; z-index: 2; }
+  .cta-final .section-title { max-width: 620px; margin: 0 auto; }
+  .cta-final > .container > p { max-width: 480px; margin: 22px auto 0; font-size: 15.5px; color: var(--navy); }
+  .cta-final .hero-actions { margin-top: 36px; }
+  .cta-note { margin-top: 26px; font-size: 14.5px; font-weight: 700; font-style: italic; color: var(--navy); }
+  .cta-hours { margin-top: 18px; font-size: 14px; font-weight: 800; color: var(--navy); }
+  .cta-hours a {
+    color: var(--navy); background: #fff; border: 2px solid var(--navy);
+    border-radius: 999px; padding: 3px 14px; margin: 0 4px; display: inline-block;
+    box-shadow: 0 3px 0 rgba(43, 74, 158, 0.2);
+    transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .cta-hours a:hover { transform: translateY(2px); box-shadow: 0 1px 0 rgba(43, 74, 158, 0.2); }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--navy); color: #fff; padding: 72px 0 40px; position: relative; overflow: hidden; }
+  footer .container { z-index: 2; }
+  .foot-doodle { position: absolute; opacity: 0.5; pointer-events: none; }
+  .fd-1 { top: 26px; left: 5%; width: 44px; }
+  .fd-2 { bottom: 90px; right: 6%; width: 36px; transform: rotate(14deg); }
+  .fd-3 { top: 60px; right: 16%; width: 28px; transform: rotate(-10deg); }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 36px; margin-bottom: 52px; }
+  .foot-brand .wordmark { color: #fff; font-size: 27px; text-shadow: none; }
+  .foot-brand .tagline { display: block; color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-top: 6px; }
+  .foot-brand p { margin-top: 18px; font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,0.72); max-width: 260px; line-height: 1.8; }
+  .foot-col h4 {
+    font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 16px;
+  }
+  .foot-col a, .foot-col span {
+    display: block; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.88); padding: 5px 0;
+    transition: color 200ms var(--ease);
+  }
+  .foot-col a:hover { color: #ffffff; text-decoration: underline wavy var(--blue-mid) 2px; text-underline-offset: 4px; }
+  .foot-bottom {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    border-top: 1px solid rgba(255,255,255,0.18); padding-top: 26px;
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55);
+  }
+  .socials { display: flex; gap: 20px; }
+  .socials a {
+    font-weight: 800; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); transition: color 200ms var(--ease);
+  }
+  .socials a:hover { color: #fff; }
+
+  /* ================= REVEAL ================= */
+  .reveal {
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+    transition-delay: var(--d, 0ms);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  :focus-visible { outline: 3px solid var(--blue-mid); outline-offset: 3px; border-radius: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .bob, .bob-slow { animation: none !important; }
+    * { transition-duration: 0.01ms !important; }
+  }
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .hero { padding: 64px 0 96px; }
+    .doodle.d-hero-petals { display: none; }
+    .values, .bouquet-grid, .testi-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .values { margin-top: 48px; }
+    .bouquet-grid { margin-top: 48px; }
+    .testi-grid { margin-top: 44px; }
+    .story-grid { grid-template-columns: 1fr; gap: 40px; }
+    .story-photo { max-width: 420px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    section.block { padding: 76px 0; }
+    .cta-final { padding: 90px 0 100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SVG defs chung: daisy, doodle cánh hoa ===== -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <symbol id="daisy" viewBox="0 0 48 48">
+      <g stroke="#2b4a9e" stroke-width="2" fill="#ffffff">
+        <ellipse cx="24" cy="10" rx="6" ry="10"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(60 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(120 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(180 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(240 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(300 24 24)"/>
+      </g>
+      <circle cx="24" cy="24" r="5.5" fill="#6f9fe8" stroke="#2b4a9e" stroke-width="2"/>
+    </symbol>
+    <symbol id="daisy-line" viewBox="0 0 48 48">
+      <g stroke="#2b4a9e" stroke-width="2.4" fill="none" stroke-linecap="round">
+        <ellipse cx="24" cy="10" rx="6" ry="10"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(60 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(120 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(180 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(240 24 24)"/>
+        <ellipse cx="24" cy="10" rx="6" ry="10" transform="rotate(300 24 24)"/>
+      </g>
+      <circle cx="24" cy="24" r="4.5" fill="none" stroke="#2b4a9e" stroke-width="2.4"/>
+    </symbol>
+    <symbol id="petals3" viewBox="0 0 64 64">
+      <g stroke="#2b4a9e" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M6 58 C10 40 16 30 26 22"/>
+        <path d="M6 58 C14 48 24 42 36 40"/>
+        <path d="M6 58 C12 52 20 50 30 52"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= NAV ================= -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="wordmark bubble" href="#top">psy.bloomie</a>
+    <div class="nav-links">
+      <a href="#cau-chuyen">Về tụi mình</a>
+      <a href="#bo-suu-tap">Bộ sưu tập</a>
+      <a href="#dip-tang">Dịp tặng</a>
+      <a href="#lien-he">Liên hệ</a>
+    </div>
+    <a class="nav-cta" href="#dat-hoa">Đặt hoa</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-wash" aria-hidden="true"></div>
+
+  <!-- doodle line-art 3 cánh góc trái -->
+  <svg class="doodle d-hero-petals" style="top: 120px; left: 4%; width: 76px;" viewBox="0 0 64 64" aria-hidden="true">
+    <use href="#petals3"/>
+  </svg>
+  <!-- daisy trắng góc phải -->
+  <svg class="doodle bob" style="top: 96px; right: 7%; width: 58px;" viewBox="0 0 48 48" aria-hidden="true">
+    <use href="#daisy"/>
+  </svg>
+  <svg class="doodle bob-slow" style="bottom: 70px; left: 9%; width: 40px;" viewBox="0 0 48 48" aria-hidden="true">
+    <use href="#daisy-line"/>
+  </svg>
+
+  <div class="container">
+    <p class="wordmark bubble-lg reveal" style="color: var(--navy);">psy.bloomie</p>
+    <span class="tagline reveal" style="--d:80ms">flower &amp; healing</span>
+
+    <div class="hero-title-wrap reveal" style="--d:200ms; margin-top: 30px;">
+      <h1 class="bubble-lg">Gửi những điều<br>khó nói thành lời</h1>
+      <svg class="daisy-on-title bob" viewBox="0 0 48 48" aria-hidden="true">
+        <use href="#daisy"/>
+      </svg>
+    </div>
+
+    <p class="hero-quote reveal" style="--d:320ms">Có những điều rất khó nói thành lời — nhưng một bó hoa xinh, đôi khi lại có thể thay mình làm điều đó.</p>
+
+    <div class="hero-actions reveal" style="--d:400ms">
+      <a class="btn btn-primary" href="#dat-hoa">Đặt hoa</a>
+      <a class="btn btn-ghost" href="#bo-suu-tap">Xem bộ sưu tập</a>
+    </div>
+    <p class="hero-note reveal" style="--d:480ms">Hà Nội · Hoa tươi đặt trước 1–2 ngày</p>
+  </div>
+</header>
+
+<!-- ================= CHUYỆN NHỎ Ở TIỆM ================= -->
+<section class="block sec-story" id="cau-chuyen">
+  <div class="container">
+    <div class="story-grid">
+      <figure class="story-photo reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=800&q=80&auto=format&fit=crop" alt="Mặt tiền tiệm hoa psy.bloomie tại Hà Nội">
+      </figure>
+      <div class="story-copy reveal" style="--d:120ms">
+        <span class="kicker">Về psy.bloomie</span>
+        <h2 class="section-title">Chuyện nhỏ ở tiệm 🌷</h2>
+        <p>
+          psy.bloomie là một tiệm hoa online nhỏ nơi Hà Nội — nơi tụi mình dùng
+          cái bàn cũ làm bàn gói hoa, và tin rằng thành phố này cần một nơi
+          dừng chân yên tĩnh giữa ngày dài.
+        </p>
+        <p>
+          Tụi mình tin một bó hoa xinh có thể thay mình nói những điều khó nói —
+          và mong những bó hoa ở đây sẽ hiện diện trong thật nhiều câu chuyện đẹp:
+          một ngày kỷ niệm, một lời chúc, một lời xin lỗi khó nói, hay đơn giản là
+          một buổi chiều bạn muốn tự yêu thương chính mình.
+        </p>
+        <p>
+          Mỗi bó đều được chọn hoa tươi mỗi sáng, gói thủ công cẩn thận và kèm một dòng
+          thư viết tay — vì hoa xinh thì lời nhắn cũng phải dịu dàng.
+        </p>
+        <p class="story-sign">— psy.bloomie 🌷</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GIÁ TRỊ ================= -->
+<section class="block" id="gia-tri">
+  <div class="container">
+    <div class="kicker-row reveal">
+      <span class="kicker">Vì sao chọn psy.bloomie?</span>
+    </div>
+    <h2 class="section-title center reveal" style="--d:100ms">Hoa tươi, gói cẩn thận,<br>đến tận tay bạn</h2>
+    <div class="values">
+      <article class="value-card reveal">
+        <div class="value-icon" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 48 48"><use href="#daisy-line"/></svg>
+        </div>
+        <h3>Hoa tươi mỗi ngày</h3>
+        <p>Chọn trực tiếp tại chợ hoa bình minh — không tồn kho qua đêm, mỗi bó đều mới như lời chúc mới.</p>
+      </article>
+      <article class="value-card reveal" style="--d:120ms">
+        <div class="value-icon" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+            <g stroke="#2b4a9e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <path d="M7 36 C15 28 37 28 45 36"/>
+              <path d="M7 36 V14 H20 L24 20 H45 V36"/>
+              <circle cx="26" cy="10" r="3"/>
+              <path d="M20 42 H32" stroke-dasharray="1 6"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Giao hoa tận nơi tại Hà Nội</h3>
+        <p>Giao hoa tận nơi trong Hà Nội. Tụi mình gửi ảnh bó hoa thật trước khi giao để bạn hoàn toàn yên tâm.</p>
+      </article>
+      <article class="value-card reveal" style="--d:240ms">
+        <div class="value-icon" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+            <g stroke="#2b4a9e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <rect x="9" y="18" width="34" height="26" rx="3"/>
+              <path d="M9 26 H43 M26 18 V44"/>
+              <path d="M26 18 C20 18 16 10 21 8 C24.5 7 26 12 26 18 C26 12 27.5 7 31 8 C36 10 32 18 26 18 Z"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Gói quà thủ công</h3>
+        <p>Giấy washi, nơ vải mềm và một tấm thư viết tay — từng bó hoa được gói riêng như một món quà nhỏ.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BỘ SƯU TẬP ================= -->
+<section class="block sec-collection" id="bo-suu-tap">
+  <div class="container">
+    <div class="kicker-row reveal">
+      <span class="kicker">Bộ sưu tập</span>
+    </div>
+    <h2 class="section-title center reveal" style="--d:100ms">Những bó hoa đang nở<br>trong tuần này</h2>
+    <div class="bouquet-grid">
+
+      <article class="bouquet-card reveal">
+        <div class="bouquet-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80&auto=format&fit=crop" alt="Bó hoa pastel đào cắm trong lọ, tông màu dịu">
+        </div>
+        <div class="bouquet-body">
+          <h3>Bình Minh Đầu Tiên</h3>
+          <p class="bouquet-price">540.000 ₫<span class="flowers">hoa đào pastel</span></p>
+          <p class="desc">Tông peach dịu trong lọ gốm — món quà cho một buổi sáng chậm rãi.</p>
+          <a class="bouquet-order" href="#dat-hoa">Đặt bó này</a>
+        </div>
+      </article>
+
+      <article class="bouquet-card reveal" style="--d:100ms">
+        <div class="bouquet-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=800&q=80&auto=format&fit=crop" alt="Một cành tulip hồng trên nền sáng">
+        </div>
+        <div class="bouquet-body">
+          <h3>Một Cành Tháng Năm</h3>
+          <p class="bouquet-price">320.000 ₫<span class="flowers">tulip hồng</span></p>
+          <p class="desc">Chỉ một cành tulip — nhưng đủ nói hết điều chưa nói.</p>
+          <a class="bouquet-order" href="#dat-hoa">Đặt bó này</a>
+        </div>
+      </article>
+
+      <article class="bouquet-card reveal" style="--d:200ms">
+        <div class="bouquet-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=800&q=80&auto=format&fit=crop" alt="Tulip hồng cắm trong lọ thủy tinh trên nền trắng">
+        </div>
+        <div class="bouquet-body">
+          <h3>Trời Tháng Mười</h3>
+          <p class="bouquet-price">680.000 ₫<span class="flowers">tulip hồng, lọ thủy tinh</span></p>
+          <p class="desc">Hồng dịu trong lọ thủy tinh — dành riêng cho ngày 20/10 của người bạn thương.</p>
+          <a class="bouquet-order" href="#dat-hoa">Đặt bó này</a>
+        </div>
+      </article>
+
+      <article class="bouquet-card reveal">
+        <div class="bouquet-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&q=80&auto=format&fit=crop" alt="Một đóa hồng đơn trong lọ thủy tinh trước tường hồng">
+        </div>
+        <div class="bouquet-body">
+          <h3>Gặp Lại Bình Yên</h3>
+          <p class="bouquet-price">460.000 ₫<span class="flowers">hồng đơn</span></p>
+          <p class="desc">Một đóa hồng trước bức tường cùng tông — tĩnh lặng, và đủ đầy.</p>
+          <a class="bouquet-order" href="#dat-hoa">Đặt bó này</a>
+        </div>
+      </article>
+
+      <article class="bouquet-card reveal" style="--d:100ms">
+        <div class="bouquet-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80&auto=format&fit=crop" alt="Bó hoa rustic được gói tự nhiên">
+        </div>
+        <div class="bouquet-body">
+          <h3>Ghé Qua Mùa Thu</h3>
+          <p class="bouquet-price">590.000 ₫<span class="flowers">bó hoa rustic</span></p>
+          <p class="desc">Những cành đồng nội được gói mộc mạc — hơi thở của mùa thu giữa Hà Nội.</p>
+          <a class="bouquet-order" href="#dat-hoa">Đặt bó này</a>
+        </div>
+      </article>
+
+      <article class="bouquet-card reveal" style="--d:200ms">
+        <div class="bouquet-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1533616688419-b7a585564566?w=800&q=80&auto=format&fit=crop" alt="Bó hoa tông cam dịu cắm trong lọ trắng">
+        </div>
+        <div class="bouquet-body">
+          <h3>Nắng Đầu Ngày</h3>
+          <p class="bouquet-price">480.000 ₫<span class="flowers">cam đất, lọ trắng</span></p>
+          <p class="desc">Cam đất ấm áp trong lọ trắng — cho một ngày bình thường dễ thương.</p>
+          <a class="bouquet-order" href="#dat-hoa">Đặt bó này</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= DỊP TẶNG ================= -->
+<section class="block sec-occasions" id="dip-tang">
+  <div class="container">
+    <div class="kicker-row reveal">
+      <span class="kicker">Dịp tặng hoa</span>
+    </div>
+    <h2 class="section-title center reveal" style="--d:100ms">Có dịp, hoặc không cần dịp</h2>
+    <p class="occasions-line reveal" style="--d:200ms">
+      Ngày Phụ nữ Việt Nam<span class="sep">·</span>Ngày Nhà giáo<span class="sep">·</span>Sinh nhật<span class="sep">·</span>Cảm ơn<span class="sep">·</span>Tân gia<span class="sep">·</span>Chúc mừng thăng chức<span class="sep">·</span>Hoa cưới<span class="sep">·</span>Xin lỗi<span class="sep">·</span>Chăm sóc người thương
+    </p>
+    <p class="occasions-note reveal" style="--d:300ms">— và cả những ngày chẳng có dịp gì. Đôi khi đó lại là dịp xứng đáng nhất. —</p>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="block">
+  <div class="container">
+    <div class="kicker-row reveal">
+      <span class="kicker">Khách hàng thương nhớ</span>
+    </div>
+    <h2 class="section-title center reveal" style="--d:100ms">Chút dịu dàng được ghi lại</h2>
+    <div class="testi-grid">
+      <article class="testi-card reveal">
+        <blockquote>Bó hoa đến đúng ngày hẹn, gói rất tỉ mỉ. Mẹ mình nhắn lại rằng hoa đẹp hơn cả trong ảnh xác nhận.</blockquote>
+        <p class="testi-person">Minh Anh · Đống Đa</p>
+      </article>
+      <article class="testi-card reveal" style="--d:120ms">
+        <blockquote>Mình đặt hoa để chúc mừng dịp studio mới của bạn thân. Tông màu của shop làm cả không gian sáng hẳn lên, nhẹ nhàng đúng kiểu mình muốn.</blockquote>
+        <p class="testi-person">Thuỳ Dương · Tây Hồ</p>
+      </article>
+      <article class="testi-card reveal" style="--d:240ms">
+        <blockquote>Lần đầu nhận thư viết tay kèm hoa. Chỉ một dòng ngắn mà người nhận giữ lại mãi trong ví.</blockquote>
+        <p class="testi-person">Quốc Bảo · Cầu Giấy</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ĐẶT HOA ================= -->
+<section class="cta-final" id="dat-hoa">
+  <div class="cta-wash" aria-hidden="true"></div>
+  <div class="container">
+    <div class="kicker-row reveal">
+      <span class="kicker">Đặt hoa</span>
+    </div>
+    <h2 class="section-title reveal" style="--d:100ms">Gọi điện cho tụi mình,<br>hoa sẽ đến đúng ngày hẹn</h2>
+    <p class="reveal" style="--d:200ms">Kể tụi mình nghe người nhận là ai và bạn muốn gửi điều gì — phần còn lại, để psy.bloomie lo. Ảnh bó hoa thật sẽ được gửi xác nhận trước khi giao.</p>
+    <div class="hero-actions reveal" style="--d:300ms">
+      <a class="btn btn-primary" href="tel:0765799413">☎ 0765 799 413</a>
+      <a class="btn btn-ghost" href="tel:0343873451">☎ 0343 873 451</a>
+    </div>
+    <p class="cta-note reveal" style="--d:400ms">Khách iu thương vui lòng đặt trước 1–2 ngày để tụi mình chuẩn bị hoa tươi nhất nhé 🤍</p>
+    <p class="cta-hours reveal" style="--d:480ms">Tiệm hoa online tại Hà Nội · <a href="https://zalo.me/0765799413" target="_blank" rel="noopener">Zalo: 0765799413</a> · <a href="https://www.instagram.com/psy.bloomie/" target="_blank" rel="noopener">Instagram: @psy.bloomie</a></p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="lien-he">
+  <svg class="foot-doodle fd-1" viewBox="0 0 48 48" aria-hidden="true">
+    <use href="#daisy"/>
+  </svg>
+  <svg class="foot-doodle fd-2" viewBox="0 0 48 48" aria-hidden="true">
+    <use href="#daisy"/>
+  </svg>
+  <svg class="foot-doodle fd-3" viewBox="0 0 48 48" aria-hidden="true">
+    <use href="#daisy-line"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="wordmark bubble">psy.bloomie</span>
+        <span class="tagline">flower &amp; healing 🌷</span>
+        <p>Tiệm hoa online nhỏ ở Hà Nội, tin rằng một bó hoa đúng lúc có thể chữa lành nhiều hơn một lời khuyên.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Giờ nhận đơn</h4>
+        <span>Thứ Hai – Chủ Nhật</span>
+        <span>8:00 – 20:00</span>
+        <span>Nhận đơn đặt trước 1–2 ngày</span>
+      </div>
+      <div class="foot-col">
+        <h4>Khu vực</h4>
+        <span>Tiệm hoa online — Hà Nội</span>
+        <span>Giao hoa tận nơi trong Hà Nội</span>
+      </div>
+      <div class="foot-col">
+        <h4>Liên hệ</h4>
+        <a href="tel:0765799413">☎ 0765 799 413</a>
+        <a href="tel:0343873451">☎ 0343 873 451</a>
+        <a href="https://zalo.me/0765799413" target="_blank" rel="noopener">Zalo: 0765799413</a>
+        <a href="https://www.instagram.com/psy.bloomie/" target="_blank" rel="noopener">Instagram: @psy.bloomie</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 psy.bloomie — flower &amp; healing</span>
+      <div class="socials">
+        <a href="https://zalo.me/0765799413" target="_blank" rel="noopener">Zalo</a>
+        <a href="https://www.instagram.com/psy.bloomie/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var els = document.querySelectorAll(".reveal");
+    if (reduced || !("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
