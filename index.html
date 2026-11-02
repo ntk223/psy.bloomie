@@ -222,6 +222,7 @@
   }
   .bouquet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
   .bouquet-card {
+    display: flex; flex-direction: column;
     background: #fff; border: 3px solid var(--navy); border-radius: 14px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
@@ -238,7 +239,7 @@
     transition: transform 600ms var(--ease);
   }
   .bouquet-card:hover .bouquet-photo img { transform: scale(1.04); }
-  .bouquet-body { padding: 20px 22px 24px; }
+  .bouquet-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
   .bouquet-body h3 { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.45rem; color: var(--navy); }
   .bouquet-price {
     margin: 4px 0 8px;
@@ -247,9 +248,9 @@
     font-family: "Nunito", sans-serif; font-weight: 600; font-size: 15.5px;
     color: rgba(43, 74, 158, 0.72);
   }
-  .bouquet-body .desc { font-size: 16.5px; font-weight: 600; color: rgba(43, 74, 158, 0.78); }
+  .bouquet-body .desc { font-size: 16.5px; font-weight: 600; color: rgba(43, 74, 158, 0.78); margin: 0 0 12px; }
   .bouquet-order {
-    display: inline-block; margin-top: 12px;
+    display: inline-block; margin-top: auto; align-self: flex-start;
     font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 16px;
     color: var(--navy); background: var(--sky-soft);
     border: 2px solid var(--navy); border-radius: 999px; padding: 6px 20px;
