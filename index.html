@@ -408,13 +408,14 @@
     .story-copy p { font-size: 18px; }
     .values { grid-template-columns: 1fr; max-width: 480px; margin: 44px auto 0; }
     .value-card p { font-size: 16.5px; }
-    .bouquet-grid { gap: 18px; }
-    .bouquet-body { padding: 16px 16px 20px; }
-    .bouquet-body h3 { font-size: 1.25rem; }
-    .bouquet-price { font-size: 1.2rem; }
-    .bouquet-price .flowers { display: block; margin: 2px 0 0; font-size: 14px; }
-    .bouquet-body .desc { font-size: 15px; }
-    .bouquet-order { font-size: 14.5px; padding: 5px 18px; }
+    .bouquet-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+    .bouquet-photo { aspect-ratio: 4 / 5; }
+    .bouquet-body { padding: 10px 12px 12px; }
+    .bouquet-body h3 { font-size: 1rem; }
+    .bouquet-price { font-size: 1.05rem; margin-bottom: 0; }
+    .bouquet-price .flowers { display: inline; margin: 0 0 0 6px; font-size: 12.5px; }
+    .bouquet-body .desc { display: none; }
+    .bouquet-order { font-size: 13px; padding: 4px 12px; }
     .occasions-line { font-size: clamp(1.15rem, 4.2vw, 1.35rem); line-height: 2; }
     .occasions-note { font-size: 15px; }
     .testi-card { padding: 26px 20px 22px; }
@@ -441,7 +442,7 @@
     .story-photo { box-shadow: 5px 5px 0 rgba(43, 74, 158, 0.16); }
     .value-card, .bouquet-card, .testi-card { box-shadow: 4px 4px 0 rgba(43, 74, 158, 0.14); }
     .value-card:hover, .bouquet-card:hover, .testi-card:hover { box-shadow: 6px 6px 0 rgba(43, 74, 158, 0.16); }
-    .bouquet-grid { grid-template-columns: 1fr; max-width: 100%; }
+    .bouquet-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     section.block { padding: 56px 0; }
     .cta-final { padding: 64px 0 72px; }
     .foot-grid { grid-template-columns: 1fr; gap: 24px; }
