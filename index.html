@@ -376,15 +376,30 @@
   /* ============ MOBILE ≤ 740px ============ */
   @media (max-width: 740px) {
     .container { padding: 0 20px; }
-    .nav-links { display: none; }
-    .nav-inner { height: 66px; }
-    .nav .wordmark { font-size: 21px; }
-    .nav-cta { font-size: 15px; padding: 8px 20px; }
+    /* Nav 2 hàng: hàng 1 wordmark + CTA, hàng 2 links giữa */
+    .nav-inner {
+      height: auto;
+      flex-wrap: wrap;
+      padding-top: 10px;
+      padding-bottom: 7px;
+      row-gap: 2px;
+    }
+    .nav-links {
+      order: 3;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 14px;
+    }
+    .nav-links a { font-size: 14px; line-height: 1.4; }
+    .nav .wordmark { font-size: 20px; }
+    .nav-cta { font-size: 14.5px; padding: 7px 18px; }
     .hero { padding: 56px 0 80px; }
     .hero .tagline { font-size: 1.05rem; }
     .hero-quote { font-size: 18px; }
     .hero-note { font-size: 14px; letter-spacing: 0.08em; }
-    .doodle.d-hero-petals { display: none; }
+    /* Ẩn mọi doodle đè vùng chữ ở hero (daisy góc phải đè headline, daisy-line đè hero-note) */
+    .hero .doodle, .daisy-on-title { display: none; }
     section.block { padding: 64px 0; }
     .story-grid { grid-template-columns: 1fr; gap: 36px; }
     .story-photo { max-width: 100%; }
@@ -416,7 +431,6 @@
     body { font-size: 18px; }
     .hero .wordmark { font-size: clamp(2.1rem, 8vw, 2.4rem); }
     .hero h1 { font-size: clamp(2.2rem, 8.5vw, 2.9rem); }
-    .daisy-on-title { width: 44px; height: 44px; top: -20px; right: -8px; }
     .hero-quote { font-size: 17px; }
     .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
     .hero-actions .btn { width: 100%; justify-content: center; min-height: 48px; }
