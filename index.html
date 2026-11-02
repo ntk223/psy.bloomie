@@ -439,8 +439,15 @@
     .cta-note { font-size: 16.5px; }
     .cta-hours { font-size: 15px; }
     footer { padding: 56px 0 36px; }
-    .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-    .foot-col a, .foot-col span { font-size: 16px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 12px 18px; margin-bottom: 30px; }
+    .foot-brand { grid-column: 1 / -1; }
+    .foot-brand p { display: none; }
+    .foot-brand .tagline { margin-top: 2px; font-size: 1rem; }
+    .foot-col h4 { margin-bottom: 6px; }
+    .foot-col a, .foot-col span { font-size: 15.5px; padding: 3px 0; }
+    /* Liên hệ: full-width, các link xếp ngang */
+    .foot-col:last-child { grid-column: 1 / -1; }
+    .foot-col:last-child a { display: inline-block; padding: 3px 14px 3px 0; }
   }
 
   /* ============ SMALL MOBILE ≤ 480px ============ */
@@ -459,7 +466,7 @@
 
     section.block { padding: 56px 0; }
     .cta-final { padding: 64px 0 72px; }
-    .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 10px 14px; }
     .foot-bottom { flex-direction: column; justify-content: center; text-align: center; }
     .socials { justify-content: center; }
   }
@@ -790,7 +797,7 @@
       <div class="foot-brand">
         <span class="wordmark bubble">psy.bloomie</span>
         <span class="tagline">flower &amp; healing 🌷</span>
-        <p>Tiệm hoa online nhỏ ở Hà Nội, tin rằng một bó hoa đúng lúc có thể chữa lành nhiều hơn một lời khuyên.</p>
+        <p>Tiệm hoa online nhỏ ở Hà Nội — hoa tươi mỗi sáng, gói cẩn thận.</p>
       </div>
       <div class="foot-col">
         <h4>Giờ nhận đơn</h4>
